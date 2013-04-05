@@ -1,0 +1,629 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>Microsoft.ComplexEventProcessing.ManagementService</name>
+  </assembly>
+  <members>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.CancelCheckpointRequest">
+      <summary>Describes a request to cancel the checkpointing of a resource.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.CancelCheckpointRequest.#ctor">
+      <summary> Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.CancelCheckpointRequest" />class. </summary>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.CancelCheckpointRequest.Name">
+      <summary>Gets or sets the name of the resource being checkpointed for which the cancelation of the checkpoint has been requested. </summary>
+      <returns>The name of the resource being checkpointed for which the cancelation of the checkpoint has been requested.</returns>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.ChangeQueryStateRequest">
+      <summary>Contains request information for a <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.ChangeQueryState" /> operation.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.ChangeQueryStateRequest.#ctor">
+      <summary>Initializes a new, default instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.ChangeQueryStateRequest" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.ChangeQueryStateRequest.#ctor(System.Uri,Microsoft.ComplexEventProcessing.ManagementService.QueryState)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.ChangeQueryStateRequest" /> class with the specified name and query state.</summary>
+      <param name="name">A <see cref="T:System.Uri" /> value containing the name of the query state to be changed.</param>
+      <param name="queryState">A <see cref="P:Microsoft.ComplexEventProcessing.ManagementService.QueryState" /> value specifying the new query state value.</param>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.ChangeQueryStateRequest.Name">
+      <summary>Gets or sets the name of the parent container in which the object is going to be created.</summary>
+      <returns>A <see cref="T:System.String" /> containing the name of the parent container.</returns>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.ChangeQueryStateRequest.QueryState">
+      <summary>Gets or sets the value that the query state will be changed to.</summary>
+      <returns>A <see cref="P:Microsoft.ComplexEventProcessing.ManagementService.QueryState" /> value specifying the new query state value.</returns>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.ChangeQueryStateResponse">
+      <summary>Contains the response for a ChangeQueryState operation.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.ChangeQueryStateResponse.#ctor">
+      <summary>Initializes a new, default instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.ChangeQueryStateResponse" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.ChangeQueryStateResponse.#ctor(System.Uri,Microsoft.ComplexEventProcessing.ManagementService.QueryState)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.ChangeQueryStateResponse" /> class with the specified name and query state.</summary>
+      <param name="name">A <see cref="T:System.Uri" /> value containing the name of the query state to be changed.</param>
+      <param name="queryState">A <see cref="P:Microsoft.ComplexEventProcessing.ManagementService.QueryState" /> value specifying the requested new query state value.</param>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.ChangeQueryStateResponse.Name">
+      <summary>Gets or sets the name of the parent container in which the object is going to be created.</summary>
+      <returns>A <see cref="T:System.Uri" /> value containing the name of the parent container.</returns>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.ChangeQueryStateResponse.QueryState">
+      <summary>Gets or sets the value that the query state will be changed to.</summary>
+      <returns>A <see cref="P:Microsoft.ComplexEventProcessing.ManagementService.QueryState" /> value specifying the requested new query state value.</returns>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.CheckpointRequest">
+      <summary>Describes a request to checkpoint a resource.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.CheckpointRequest.#ctor">
+      <summary> Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.CheckpointRequest" />class. </summary>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.CheckpointRequest.Name">
+      <summary>Gets or sets the name of the resource to be checkpointed. </summary>
+      <returns>The name of the resource to be checkpointed.</returns>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.CheckpointResponse">
+      <summary>Describes a result of a request to checkpoint a resource.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.CheckpointResponse.#ctor">
+      <summary> Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.CheckpointResponse" />class. </summary>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.CheckpointResponse.Result">
+      <summary> Gets or sets the result of the checkpoint operation. </summary>
+      <returns>The result of the checkpoint operation.</returns>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.ClearDiagnosticSettingsNotSupportedFault">
+      <summary>Represents a SOAP fault message that is generated when clearing the diagnostic settings is not supported for a specific name.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.ClearDiagnosticSettingsNotSupportedFault.#ctor(System.Uri,System.String)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.ClearDiagnosticSettingsNotSupportedFault" /> class. </summary>
+      <param name="name">The name of the object whose diagnostic settings cannot be cleared.</param>
+      <param name="errorMessage">The message that describes the error condition.</param>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.ClearDiagnosticSettingsNotSupportedFault.Message">
+      <summary>Gets or sets the message that describes the error condition.</summary>
+      <returns>The message that describes the error condition.</returns>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.ClearDiagnosticSettingsNotSupportedFault.Name">
+      <summary>Gets or sets the name of the object whose diagnostic settings cannot be cleared.</summary>
+      <returns>A <see cref="T:System.Uri" /> object that contains the name of the object whose diagnostic settings cannot be cleared. </returns>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.ClearDiagnosticSettingsRequest">
+      <summary>Represents a request message for the ClearDiagnosticSettings Web service call.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.ClearDiagnosticSettingsRequest.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.ClearDiagnosticSettingsRequest" /> class. </summary>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.ClearDiagnosticSettingsRequest.Name">
+      <summary>Gets or sets the name of the object to clear the diagnostic settings for.</summary>
+      <returns>A <see cref="T:System.Uri" /> object that contains the name of the object to clear the diagnostic settings for.</returns>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.CreateRequest">
+      <summary>Encapsulates the parameters for a Create operation.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.CreateRequest.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.CreateRequest" /> class.</summary>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.CreateRequest.Body">
+      <summary>Gets or sets the XML definition of the object to be created.</summary>
+      <returns>A <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.CreateRequestBody" /> object containing the XML definition.</returns>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.CreateRequest.Name">
+      <summary>Gets or sets the name of the parent container in which the object is going to be created.</summary>
+      <returns>A <see cref="T:System.Uri" /> value containing the name of the parent container.</returns>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.CreateRequestBody">
+      <summary>Represents the body elements of a Create request.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.CreateRequestBody.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.CreateRequestBody" /> class. </summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.CreateRequestBody.GetSchema">
+      <summary>Gets the XML Schema that this object can be serialized to. This method is not currently used.</summary>
+      <returns>Always returns null.</returns>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.CreateRequestBody.GetSchema(System.Xml.Schema.XmlSchemaSet)">
+      <summary>Adds the XML Schema for this object to the specified <see cref="T:System.Xml.Schema.XmlSchemaSet" /> object.</summary>
+      <returns>An <see cref="T:System.Xml.XmlQualifiedName" /> object that represents the XML qualified name of the body element.</returns>
+      <param name="schemaSet">The <see cref="T:System.Xml.Schema.XmlSchemaSet" /> object to add the XML Schema to.</param>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.CreateRequestBody.ReadXml(System.Xml.XmlReader)">
+      <summary>Reads the XML data from the specified <see cref="T:System.Xml.XmlReader" /> object.</summary>
+      <param name="reader">An <see cref="T:System.Xml.XmlReader" /> object that is positioned on the XML element that contains the body elements for this object.</param>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.CreateRequestBody.WriteXml(System.Xml.XmlWriter)">
+      <summary>Writes the XML data for this object to the specified <see cref="T:System.Xml.XmlWriter" /> object.</summary>
+      <param name="writer">The <see cref="T:System.Xml.XmlWriter" /> object to write to.</param>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.CreateResponse">
+      <summary>Encapsulates the response information for a Create operation.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.CreateResponse.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.CreateResponse" /> class.</summary>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.CreateResponse.ResourceAddress">
+      <summary>Gets or sets the name of the object that has been created.</summary>
+      <returns>A <see cref="T:System.ServiceModel.EndpointAddress10" /> class containing the name of the created object.</returns>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.DeleteRequest">
+      <summary>Contains information about a Delete operation request.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.DeleteRequest.#ctor">
+      <summary>Initializes a new, default instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.DeleteRequest" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.DeleteRequest.#ctor(System.Uri)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.DeleteRequest" /> class with the specified resource name.</summary>
+      <param name="name">A <see cref="T:System.Uri" /> object specifying the name of the resource to be deleted.</param>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.DeleteRequest.Name">
+      <summary>Gets or sets the name of the resource that will be deleted.</summary>
+      <returns>A <see cref="T:System.Uri" /> value that contains the name of the resource to be deleted.</returns>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.DeleteResponse">
+      <summary>Contains information about the response to a Delete operation request.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.DeleteResponse.#ctor">
+      <summary>Initializes a new, default instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.DeleteResponse" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.DeleteResponse.#ctor(System.Uri)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.DeleteResponse" /> class with the specified resource name.</summary>
+      <param name="name">A <see cref="T:System.Uri" /> value specifying the name of the resource to be deleted.</param>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.DeleteResponse.Name">
+      <summary>Gets or sets the name of the resource to be deleted.</summary>
+      <returns>A <see cref="T:System.Uri" /> value specifying the name of the resource to be deleted.</returns>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.EnumerateRequest">
+      <summary>Contains the properties needed to call the Enumerate function.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.EnumerateRequest.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.EnumerateRequest" /> class.</summary>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.EnumerateRequest.Name">
+      <summary>Gets or sets the name of the container object that contains the requests to enumerate.</summary>
+      <returns>A <see cref="T:System.Uri" /> value containing the name of the container object to be enumerated.</returns>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.EnumerateResponse">
+      <summary>Contains the response information for an Enumerate method call.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.EnumerateResponse.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.EnumerateResponse" /> class.</summary>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.EnumerateResponse.ResourceNames">
+      <summary>Gets or sets the names for the objects returned by the Enumerate operation.</summary>
+      <returns>A <see cref="T:System.Collections.Generic.List" /> object containing the names for objects returned by an Enumerate operation.</returns>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.GetDiagnosticSettingsNotSupportedFault">
+      <summary>Represents a SOAP fault message that is generated when getting the diagnostic settings is not supported for a specific name.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.GetDiagnosticSettingsNotSupportedFault.#ctor(System.Uri,System.String)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.GetDiagnosticSettingsNotSupportedFault" /> class. </summary>
+      <param name="name">The name of the object whose diagnostic settings cannot be returned.</param>
+      <param name="errorMessage">The message that describes the error condition.</param>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.GetDiagnosticSettingsNotSupportedFault.Message">
+      <summary>Gets or sets the message that describes the error condition.</summary>
+      <returns>The message that describes the error condition.</returns>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.GetDiagnosticSettingsNotSupportedFault.Name">
+      <summary>Gets or sets the name of the object whose diagnostic settings cannot be returned.</summary>
+      <returns>A <see cref="T:System.Uri" /> object that contains the name of the object whose diagnostic settings cannot be returned.</returns>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.GetDiagnosticSettingsRequest">
+      <summary>Represents a request message for the GetDiagnosticSettings Web service call.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.GetDiagnosticSettingsRequest.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.GetDiagnosticSettingsRequest" /> class. </summary>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.GetDiagnosticSettingsRequest.Name">
+      <summary>Gets or sets the name of the object to get the diagnostics settings for.</summary>
+      <returns>A <see cref="T:System.Uri" /> object that contains the name of the object to get the diagnostics settings for.</returns>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.GetDiagnosticSettingsResponse">
+      <summary>Represents a response message for the GetDiagnosticSettings Web service call.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.GetDiagnosticSettingsResponse.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.GetDiagnosticSettingsResponse" /> class. </summary>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.GetDiagnosticSettingsResponse.DiagnosticAspects">
+      <summary>Gets or sets the enabled diagnostic aspects.</summary>
+      <returns>A <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.ManagementServiceDiagnosticAspects" /> value that specifies diagnostic aspects that are enabled.</returns>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.GetDiagnosticSettingsResponse.DiagnosticLevel">
+      <summary>Gets or sets the verbosity level for the diagnostic aspects.</summary>
+      <returns>A <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.ManagementServiceDiagnosticLevel" /> value that specifies the verbosity level for the diagnostic aspects.</returns>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.GetDiagnosticViewNotSupportedFault">
+      <summary>Represents a SOAP fault message that is generated when getting the diagnostic view is not supported for a specific name.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.GetDiagnosticViewNotSupportedFault.#ctor(System.Uri,System.String)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.GetDiagnosticViewNotSupportedFault" /> class. </summary>
+      <param name="name">The name of the object whose diagnostic view cannot be returned.</param>
+      <param name="errorMessage">The message that describes the error condition.</param>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.GetDiagnosticViewNotSupportedFault.Message">
+      <summary>Gets or sets the message that describes the error condition.</summary>
+      <returns>The message that describes the error condition.</returns>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.GetDiagnosticViewNotSupportedFault.Name">
+      <summary>Gets or sets the name of the object whose diagnostic view cannot be returned.</summary>
+      <returns>A <see cref="T:System.Uri" /> object that contains the name of the object whose diagnostic view cannot be returned.</returns>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.GetDiagnosticViewRequest">
+      <summary>Represents a request message for the GetDiagnosticView Web service call.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.GetDiagnosticViewRequest.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.GetDiagnosticViewRequest" /> class. </summary>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.GetDiagnosticViewRequest.Name">
+      <summary>Gets or sets the name of the object to get the diagnostics view for.</summary>
+      <returns>A <see cref="T:System.Uri" /> object that contains the name of the object to get the diagnostics view for.</returns>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.GetDiagnosticViewResponse">
+      <summary>Represents a response message for the GetDiagnosticView Web service call.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.GetDiagnosticViewResponse.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.GetDiagnosticViewResponse" /> class. </summary>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.GetDiagnosticViewResponse.View">
+      <summary>Gets or sets the diagnostic view for the specified name. </summary>
+      <returns>A <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.DiagnosticView" /> object.</returns>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.GetEntityTypeRequest">
+      <summary> Contains information about the GetEntityType request. </summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.GetEntityTypeRequest.#ctor">
+      <summary> Initializes a new, default instance of the GetEntityTypeRequest class. </summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.GetEntityTypeRequest.#ctor(System.Uri)">
+      <summary> Initializes a new instance of the GetEntityTypeRequest class with the specified constituent name. </summary>
+      <param name="name">A T:System.Uri object specifying the name of the entity.</param>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.GetEntityTypeRequest.Name">
+      <summary> Gets or sets the name of the entity. </summary>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.GetRequest">
+      <summary>Contains the request for a Get call.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.GetRequest.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.GetRequest" /> class.</summary>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.GetRequest.Name">
+      <summary>Gets or sets the name of the resource to be retrieved.</summary>
+      <returns>A <see cref="T:System.Uri" /> value containing the name of the resource to be retrieved.</returns>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.GetResponse">
+      <summary>Contains the response to the Get call request.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.GetResponse.#ctor">
+      <summary>Initializes a new, default instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.GetResponse" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.GetResponse.#ctor(System.Xml.Serialization.IXmlSerializable)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.GetResponse" /> class with the specified body elements.</summary>
+      <param name="bodyElements">The object to be serialized as the body of the response message.</param>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.GetResponse.Body">
+      <summary>Gets or sets the XML definition of the requested resource.</summary>
+      <returns>An <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.GetResponseBody" /> value containing the XML definition of the requested resource.</returns>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.GetResponseBody">
+      <summary>Represents the body elements of a Get request.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.GetResponseBody.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.GetResponseBody" /> class. </summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.GetResponseBody.GetSchema">
+      <summary>Gets the XML Schema that this object can be serialized to. This method is not currently used.</summary>
+      <returns>Always returns null.</returns>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.GetResponseBody.GetSchema(System.Xml.Schema.XmlSchemaSet)">
+      <summary>Adds the XML Schema for this object to the specified <see cref="T:System.Xml.Schema.XmlSchemaSet" /> object.</summary>
+      <returns>An <see cref="T:System.Xml.XmlQualifiedName" /> object that represents the XML qualified name of the body element.</returns>
+      <param name="schemaSet">The <see cref="T:System.Xml.Schema.XmlSchemaSet" /> object to add the XML Schema to.</param>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.GetResponseBody.ReadXml(System.Xml.XmlReader)">
+      <summary>Reads the XML data from the specified <see cref="T:System.Xml.XmlReader" /> object.</summary>
+      <param name="reader">An <see cref="T:System.Xml.XmlReader" /> object that is positioned on the XML element that contains the body elements for this object.</param>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.GetResponseBody.WriteXml(System.Xml.XmlWriter)">
+      <summary>Writes the XML data for this object to the specified <see cref="T:System.Xml.XmlWriter" /> object.</summary>
+      <param name="writer">The <see cref="T:System.Xml.XmlWriter" /> object to write to.</param>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.GetTypeDefinitionRequest">
+      <summary> Request structure that identifies a type whose definition is to be returned. </summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.GetTypeDefinitionRequest.#ctor">
+      <summary> Initializes a new, default instance of the GetTypeRequest class. </summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.GetTypeDefinitionRequest.#ctor(Microsoft.ComplexEventProcessing.ManagementService.TypeIdentifier,System.Collections.Generic.IEnumerable{Microsoft.ComplexEventProcessing.ManagementService.TypeIdentifier})">
+      <summary> Initializes a new instance of the GetTypeDefinitionRequest class with the specified constituent name. </summary>
+      <param name="typeIdentifier">A T:TypeIdentifier object specifying the type.</param>
+      <param name="genericArguments">Generic arguments for the type.</param>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.GetTypeDefinitionRequest.GenericArguments">
+      <summary> Gets or sets the collection of generic arguments. </summary>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.GetTypeDefinitionRequest.TypeIdentifier">
+      <summary> Gets or sets the identifier for the type. </summary>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.IManagementService">
+      <summary>Defines methods and properties that are used to control the management functions of the Complex Event Processing engine. </summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.IManagementService.BeginCheckpoint(Microsoft.ComplexEventProcessing.ManagementService.CheckpointRequest,System.AsyncCallback,System.Object)">
+      <summary>Initiates an asynchronous checkpoint for the query.</summary>
+      <returns>The asynchronous checkpoint, which could still be pending.</returns>
+      <param name="request">The name of the query to begin a checkpoint for.</param>
+      <param name="asyncCallback">An optional asynchronous callback, to be called when the checkpoint is complete.</param>
+      <param name="asyncState">A user-provided object that distinguishes this asynchronous checkpoint request from other requests.</param>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.IManagementService.CancelCheckpoint(Microsoft.ComplexEventProcessing.ManagementService.CancelCheckpointRequest)">
+      <summary>Cancels a pending checkpoint.</summary>
+      <param name="request">A structure that identifies the running checkpoint.</param>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.IManagementService.ChangeQueryState(Microsoft.ComplexEventProcessing.ManagementService.ChangeQueryStateRequest)">
+      <summary>Changes the state of a running query.</summary>
+      <returns>A <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.ChangeQueryStateResponse" /> object that contains the query name and its current state.</returns>
+      <param name="request">A <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.ChangeQueryStateRequest" /> object that contains the name of the running query.</param>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.IManagementService.ClearDiagnosticSettings(Microsoft.ComplexEventProcessing.ManagementService.ClearDiagnosticSettingsRequest)">
+      <summary>Clears the diagnostic settings of a named object or a collection of objects.</summary>
+      <param name="request">The request which contains the name of the resource.</param>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.IManagementService.Create(Microsoft.ComplexEventProcessing.ManagementService.CreateRequest)">
+      <summary>Creates a new resource with the specified description and the address of its parent container.</summary>
+      <returns>A <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.CreateResponse" /> object that contains object name.</returns>
+      <param name="request">A <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.CreateRequest" /> object that contains the resource object’s XML definition and the name of the parent object.</param>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.IManagementService.Delete(Microsoft.ComplexEventProcessing.ManagementService.DeleteRequest)">
+      <summary>Deletes the specified resource.</summary>
+      <returns>A <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.DeleteResponse" /> object that contains the name of the resource.</returns>
+      <param name="request">A <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.DeleteRequest" /> object that specifies the resource to be deleted.</param>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.IManagementService.EndCheckpoint(System.IAsyncResult)">
+      <summary>Waits for the pending asynchronous checkpoint request to complete.</summary>
+      <returns>A <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.CheckpointResponse" /> with its Result set to true if the checkpoint completed successfully; otherwise, false.</returns>
+      <param name="asyncResult">The pending asynchronous checkpoint request.</param>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.IManagementService.Enumerate(Microsoft.ComplexEventProcessing.ManagementService.EnumerateRequest)">
+      <summary>Enumerates a collection of requests and returns an <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.EnumerateResponse" /> containing a collection of XML request definitions.</summary>
+      <returns>An <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.EnumerateResponse" /> object that contains a collection of XML object definitions.</returns>
+      <param name="request">An <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.EnumerateRequest" /> object that contains the name of the collection to enumerate.</param>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.IManagementService.Get(Microsoft.ComplexEventProcessing.ManagementService.GetRequest)">
+      <summary>Gets the XML definition of the specified resource.</summary>
+      <returns>A <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.GetResponse" /> object that contains the XML resource definition.</returns>
+      <param name="request">A <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.GetRequest" /> object that contains the name of the resource.</param>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.IManagementService.GetDiagnosticSettings(Microsoft.ComplexEventProcessing.ManagementService.GetDiagnosticSettingsRequest)">
+      <summary>Gets the diagnostic settings that apply to a specific named object.</summary>
+      <returns>A <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.GetResponse" /> object that contains the diagnostic aspects and level that apply to the specified name.</returns>
+      <param name="request">A <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.GetRequest" /> object that contains the name of the resource.</param>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.IManagementService.GetDiagnosticView(Microsoft.ComplexEventProcessing.ManagementService.GetDiagnosticViewRequest)">
+      <summary>Gets the diagnostic view of a named object or a collection of objects.</summary>
+      <returns>A <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.GetResponse" /> object that contains the diagnostic view.</returns>
+      <param name="request">A <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.GetRequest" /> object that contains the name of the resource.</param>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.IManagementService.GetEntityExpressionType(Microsoft.ComplexEventProcessing.ManagementService.GetEntityTypeRequest)">
+      <summary> Gets information about the type of the expression that represents an entity. </summary>
+      <returns>A response structure that allows to reconstruct a type equivalent to the type of the expression that describes the entity.</returns>
+      <param name="request">The structure that identifies the entity.</param>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.IManagementService.GetTypeDefinition(Microsoft.ComplexEventProcessing.ManagementService.GetTypeDefinitionRequest)">
+      <summary> Gets information about types present on the server. </summary>
+      <returns>A response structure that describes types present on the server.</returns>
+      <param name="request">The structure that identifies types whose description we are requesting.</param>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.IManagementService.ResumeProcess(Microsoft.ComplexEventProcessing.ManagementService.ResumeProcessRequest)">
+      <summary> Resumes a process. </summary>
+      <returns>A <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.ResumeProcessResponse" /> object that  contains the process name.</returns>
+      <param name="request">A <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.ResumeProcessRequest" /> object  that contains the name of the process.</param>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.IManagementService.SetDiagnosticSettings(Microsoft.ComplexEventProcessing.ManagementService.SetDiagnosticSettingsRequest)">
+      <summary>Sets the diagnostics settings of a named object or a collection of objects.</summary>
+      <param name="request">A <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.GetRequest" /> object that contains the name of the resource and the new diagnostic settings.</param>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.InvalidDefinitionFault">
+      <summary>Represents an invalid definition fault.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.InvalidDefinitionFault.#ctor(System.String)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.InvalidDefinitionFault" /> class with the specified message.</summary>
+      <param name="message">A <see cref="T:System.String" /> that contains the message providing information about the fault.</param>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.InvalidDefinitionFault.Message">
+      <summary>Gets or sets the message providing information about the fault.</summary>
+      <returns>A <see cref="T:System.String" /> that contains the message providing information about the fault.</returns>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.InvalidNameFault">
+      <summary>Represents a fault that occurs when an invalid name is detected.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.InvalidNameFault.#ctor(System.String)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.InvalidNameFault" /> class with the specified message.</summary>
+      <param name="message">A <see cref="T:System.String" /> that contains the message providing information about the fault.</param>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.InvalidNameFault.Message">
+      <summary>Gets or sets the message providing information about this fault.</summary>
+      <returns>A <see cref="T:System.String" /> that contains the message providing information about the fault.</returns>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.ManagementFault">
+      <summary>Represents a fault that occurs due to a generic failure in the management service.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.ManagementFault.#ctor(System.String)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.ManagementFault" /> class with the specified message.</summary>
+      <param name="message">A <see cref="T:System.String" /> that contains the message providing information about the fault.</param>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.ManagementFault.Message">
+      <summary>Gets or sets the message for this fault.</summary>
+      <returns>A <see cref="T:System.String" /> that contains the message providing information about the fault.</returns>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.ManagementServiceDiagnosticAspects">
+      <summary>Specifies the different diagnostic aspects that can be turned on or off separately.</summary>
+    </member>
+    <member name="F:Microsoft.ComplexEventProcessing.ManagementService.ManagementServiceDiagnosticAspects.None">
+      <summary>Disables all diagnostics aspects.</summary>
+    </member>
+    <member name="F:Microsoft.ComplexEventProcessing.ManagementService.ManagementServiceDiagnosticAspects.DiagnosticViews">
+      <summary>Enables diagnostic views.</summary>
+    </member>
+    <member name="F:Microsoft.ComplexEventProcessing.ManagementService.ManagementServiceDiagnosticAspects.Debug">
+      <summary>Enables debug tracing (enter and exit methods, exceptions, and so forth).</summary>
+    </member>
+    <member name="F:Microsoft.ComplexEventProcessing.ManagementService.ManagementServiceDiagnosticAspects.StateChanges">
+      <summary>Enables tracing of creation, destruction, and state changes of objects in the engine.</summary>
+    </member>
+    <member name="F:Microsoft.ComplexEventProcessing.ManagementService.ManagementServiceDiagnosticAspects.CepEventTracing">
+      <summary>Enables tracing of CEP events as they progress through the queries.</summary>
+    </member>
+    <member name="F:Microsoft.ComplexEventProcessing.ManagementService.ManagementServiceDiagnosticAspects.GenerateErrorReports">
+      <summary>Generates error reports on query failures.</summary>
+    </member>
+    <member name="F:Microsoft.ComplexEventProcessing.ManagementService.ManagementServiceDiagnosticAspects.PerformanceCounters">
+      <summary>Enables performance counters.</summary>
+    </member>
+    <member name="F:Microsoft.ComplexEventProcessing.ManagementService.ManagementServiceDiagnosticAspects.Admin">
+      <summary>Enables application logging of administrative events.</summary>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.ManagementServiceDiagnosticLevel">
+      <summary>Specifies the verbosity level for the diagnostic aspects.</summary>
+    </member>
+    <member name="F:Microsoft.ComplexEventProcessing.ManagementService.ManagementServiceDiagnosticLevel.Always">
+      <summary>The least verbose diagnostic level. Only diagnostics that are always on are reported.</summary>
+    </member>
+    <member name="F:Microsoft.ComplexEventProcessing.ManagementService.ManagementServiceDiagnosticLevel.Critical">
+      <summary>Reports critical diagnostics.</summary>
+    </member>
+    <member name="F:Microsoft.ComplexEventProcessing.ManagementService.ManagementServiceDiagnosticLevel.Error">
+      <summary>Reports error diagnostics.</summary>
+    </member>
+    <member name="F:Microsoft.ComplexEventProcessing.ManagementService.ManagementServiceDiagnosticLevel.Warning">
+      <summary>Reports warning diagnostics.</summary>
+    </member>
+    <member name="F:Microsoft.ComplexEventProcessing.ManagementService.ManagementServiceDiagnosticLevel.Informational">
+      <summary>Reports informational diagnostics. </summary>
+    </member>
+    <member name="F:Microsoft.ComplexEventProcessing.ManagementService.ManagementServiceDiagnosticLevel.Verbose">
+      <summary>The most verbose diagnostic level. All diagnostics are reported.</summary>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.QueryState">
+      <summary>Enumerates a list of possible query states.</summary>
+    </member>
+    <member name="F:Microsoft.ComplexEventProcessing.ManagementService.QueryState.Started">
+      <summary>The Query has been started, and is processing events.</summary>
+    </member>
+    <member name="F:Microsoft.ComplexEventProcessing.ManagementService.QueryState.Stopped">
+      <summary>The query has been stopped.</summary>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.ResumeProcessRequest">
+      <summary> Contains request information for a ResumeProcess operation. </summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.ResumeProcessRequest.#ctor">
+      <summary> Initializes a new, default instance of the ResumeProcessRequest class. </summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.ResumeProcessRequest.#ctor(System.Uri)">
+      <summary> Initializes a new instance of the ResumeProcessRequest class with the specified name. </summary>
+      <param name="name">A T:System.Uri value containing the name of the process to be resumed.</param>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.ResumeProcessRequest.Name">
+      <summary> Gets or sets the name of the process. </summary>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.ResumeProcessResponse">
+      <summary> Contains the response for a ResumeProcess operation. </summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.ResumeProcessResponse.#ctor">
+      <summary> Initializes a new instance of the ResumeProcessResponse class. </summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.ResumeProcessResponse.#ctor(System.Uri)">
+      <summary> Initializes a new instance of the ResumeProcessResponse class with the specified name. </summary>
+      <param name="name">A T:System.Uri value containing the name of the process to be resumed.</param>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.ResumeProcessResponse.Name">
+      <summary> Gets or sets the name of the process. </summary>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.RuntimeFault">
+      <summary>Represents a fault that occurs due to a generic failure in the runtime.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.RuntimeFault.#ctor(System.String)">
+      <summary>Initializes a new instance of the RuntimeFault class with the specified message.</summary>
+      <param name="message">A <see cref="T:System.String" /> that contains the message providing information about the fault.</param>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.RuntimeFault.Message">
+      <summary>Gets or sets the message for this fault.</summary>
+      <returns>A <see cref="T:System.String" /> that contains the message providing information about the fault.</returns>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.ServerDiagnosticView">
+      <summary>Represents a diagnostic view for a single engine object as a container of name-value pairs.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.ServerDiagnosticView.#ctor">
+      <summary>Initializes a new, default instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.ServerDiagnosticView" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.ServerDiagnosticView.#ctor(System.Uri,System.Collections.Generic.IDictionary{System.String,System.Object})">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.ServerDiagnosticView" /> class with the specified name and properties.</summary>
+      <param name="instanceName">The name of the instance.</param>
+      <param name="properties">Specifies the object properties.</param>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.ServerDiagnosticView.Count">
+      <summary>Gets the number of properties in the diagnostic view.</summary>
+      <returns>An Integer value specifying the number of properties in the diagnostic view.</returns>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.ServerDiagnosticView.GetProperty``1(System.String)">
+      <summary>Gets the value for a specific property.</summary>
+      <returns>The value of the property with the specified name.</returns>
+      <param name="name">The name of the property that contains the value to be returned.</param>
+      <typeparam name="TValue"></typeparam>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.ServerDiagnosticView.Name">
+      <summary>Gets or sets the name of the object that is the subject of the diagnostic view.</summary>
+      <returns>The name of the object that is the subject of the diagnostic view.</returns>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.ServerDiagnosticView.Values">
+      <summary>Gets a collection of name values pairs for all values in the diagnostic view.</summary>
+      <returns>A collection of name value pairs.</returns>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.SetDiagnosticSettingsNotSupportedFault">
+      <summary>Represents a SOAP fault message that is generated when setting the diagnostic settings is not supported for a specific name.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.SetDiagnosticSettingsNotSupportedFault.#ctor(System.Uri,System.String)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.SetDiagnosticSettingsNotSupportedFault" /> class. </summary>
+      <param name="name">The name of the object whose diagnostic settings cannot be set.</param>
+      <param name="errorMessage">The message that describes the error condition.</param>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.SetDiagnosticSettingsNotSupportedFault.Message">
+      <summary>Gets or sets the message that describes the error condition.</summary>
+      <returns>The message that describes the error condition.</returns>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.SetDiagnosticSettingsNotSupportedFault.Name">
+      <summary>Gets or sets the name of the object whose diagnostic settings cannot be set.</summary>
+      <returns>A <see cref="T:System.Uri" /> object that contains the name of the object whose diagnostic settings cannot be set.</returns>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.SetDiagnosticSettingsRequest">
+      <summary>Represents a request message for the SetDiagnosticSettings Web service call.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.SetDiagnosticSettingsRequest.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.SetDiagnosticSettingsRequest" /> class. </summary>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.SetDiagnosticSettingsRequest.DiagnosticAspects">
+      <summary>Gets or sets the diagnostic aspects for the specified name.</summary>
+      <returns>A <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.ManagementServiceDiagnosticAspects" /> object that represents the diagnostic aspects for the specified name.</returns>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.SetDiagnosticSettingsRequest.DiagnosticLevel">
+      <summary>Gets or sets the diagnostic level for the specified name.</summary>
+      <returns>A <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.ManagementServiceDiagnosticLevel" /> object that represents the diagnostic level for the specified name.</returns>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.ManagementService.SetDiagnosticSettingsRequest.Name">
+      <summary>Gets or sets the name of the object to set the diagnostics settings for.</summary>
+      <returns>A <see cref="T:System.Uri" /> object that contains the name of the object to set the diagnostics settings for.</returns>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.ManagementService.TypeIdentifier">
+      <summary> Identifies a type by its name and its assembly name. </summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.ManagementService.TypeIdentifier.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.ManagementService.TypeIdentifier" /> class.</summary>
+    </member>
+    <member name="F:Microsoft.ComplexEventProcessing.ManagementService.TypeIdentifier.AssemblyName">
+      <summary> Full name of the assembly. </summary>
+    </member>
+    <member name="F:Microsoft.ComplexEventProcessing.ManagementService.TypeIdentifier.Name">
+      <summary> Full name of the type including the namespace. </summary>
+    </member>
+  </members>
+</doc>

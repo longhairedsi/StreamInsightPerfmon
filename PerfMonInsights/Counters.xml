@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<Counters>
+	<Counter>
+		<CounterEntry PollTime="10000" CategoryName="MSMQ Queue" CounterName="Messages in Queue" InstanceName="dev-app\heartbeat" MachineName="dev-app">
+		</CounterEntry>
+	</Counter>
+</Counters>

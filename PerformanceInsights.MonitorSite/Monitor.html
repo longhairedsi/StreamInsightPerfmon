@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+    <body>
+
+        <canvas width="220" height="70" id="realtime">
+            
+        </canvas>
+
+        <div id="lastvalue">
+  
+        </div>
+        
+        <script src="http://code.jquery.com/jquery-1.8.2.min.js" type="text/javascript"></script>
+        <script src="/Scripts/jquery.signalR-1.0.0-rc2.js"></script>
+        <script src="/Scripts/gauge.js"></script>
+        <script src="/signalr/hubs" type="text/javascript"></script>
+      
+ 
+        <!--  If this is an MVC project then use the following -->
+        <!--  <script src="~/signalr/hubs" type="text/javascript"></script> -->
+        
+        <script type="text/javascript">
+            $(function () {
+                var opts = {
+                    lines: 12, // The number of lines to draw
+                    angle: 0, // The length of each line
+                    lineWidth: 0.44, // The line thickness
+                    pointer: {
+                        length: 0.9, // The radius of the inner circle
+                        strokeWidth: 0.035, // The rotation offset
+                        color: '#000000' // Fill color
+                    },
+                    colorStart: '#6FADCF',   // Colors
+                    colorStop: '#8FC0DA',    // just experiment with them
+                    strokeColor: '#E0E0E0',   // to see which ones work best for you
+                    generateGradient: true
+                };
+                var target = document.getElementById('realtime'); // your canvas element
+                var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
+                gauge.maxValue = 100; // set max gauge value
+                gauge.animationSpeed = 32; // set animation speed (32 is default value)
+                gauge.set(0); // set actual value
+                
+                // Proxy created on the fly          
+                var stream = $.connection.preformanceStreamHub;
+
+                // Declare a function on the chat hub so the server can invoke it          
+                stream.client.updatePreformanceReading = function (counterReading) {
+                    $('#lastvalue').html(counterReading.Payload.Value);
+                    gauge.set(counterReading.Payload.Value);
+                };
+
+                // Start the connection
+                $.connection.hub.start().done(function () {
+                    //do some shite
+                    var config = {
+                        Specs : new Array(),
+                        RefreshPeriod: 100
+                    }
+                 
+                    var spec = {
+                        CategoryName : "Processor",
+                        CounterName :"% Processor Time",
+                        InstanceName :"_Total",
+                    };
+                    
+                    config.Specs[0] = spec;
+                    stream.server.startPerformanceStream(config);
+                });
+            });
+        </script>
+ 
+    </body>
+</html>

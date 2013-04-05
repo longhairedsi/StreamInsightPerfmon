@@ -1,0 +1,512 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>Microsoft.ComplexEventProcessing.Adapters</name>
+  </assembly>
+  <members>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.Adapter">
+      <summary>Defines the methods and properties that must be implemented by input and output adapters.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.Adapter.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.Adapters.Adapter" /> class.</summary>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.Adapters.Adapter.AdapterState">
+      <summary>Gets the state of the adapter.</summary>
+      <returns>The state of the adapter.</returns>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.Adapter.CleanupResources">
+      <summary>Specifies an internal virtual function that does cleanup of resources. To be overridden by the input and output adapter base classes.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.Adapter.Dispose">
+      <summary>Releases all of the resources owned by the adapter host.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.Adapter.Dispose(System.Boolean)">
+      <summary>Implements the Dispose pattern. To be overridden by derived classes.</summary>
+      <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.Adapter.OnStopped">
+      <summary>This function is called when the adapter invokes Stopped to stop itself. It allows derived classes to implement additional behavior besides what the base class does.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.Adapter.Ready">
+      <summary>Invoked by the adapter to signal to the engine that it is ready to be resumed. The engine will invoke Resume() only after the adapter has called Ready().</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.Adapter.Resume">
+      <summary>Calls Resume() on its own worker thread.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.Adapter.Start">
+      <summary>Calls Start() on its own worker thread.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.Adapter.Stop">
+      <summary>Notifies the adapter to stop as a result of stopping or aborting the query.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.Adapter.Stopped">
+      <summary>Invoked by the adapter to notify the runtime that the adapter has shut down.</summary>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.AdapterException">
+      <summary>The exception that is raised when an error occurs during an input or output adapter operation.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.AdapterException.#ctor">
+      <summary>Initializes a new, default instance of the <see cref="T:Microsoft.ComplexEventProcessing.Adapters.AdapterException" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.AdapterException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.Adapters.AdapterException" /> class with serialized data. </summary>
+      <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> object that holds the serialized object data.</param>
+      <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> object that contains the contextual information about the source or destination.</param>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.AdapterException.#ctor(System.String)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.Adapters.AdapterException" /> class with the specified error message.</summary>
+      <param name="message">Message describing the exception.</param>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.AdapterException.#ctor(System.String,System.Exception)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.Adapters.AdapterException" /> class with the specified message and inner exception.</summary>
+      <param name="message">Error message describing the exception.</param>
+      <param name="innerException">Message that specifies the inner exception.</param>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.AdapterState">
+      <summary>Enumeration of possible adapter states.</summary>
+    </member>
+    <member name="F:Microsoft.ComplexEventProcessing.Adapters.AdapterState.Created">
+      <summary>The adapter has just been created, but has not yet been started.</summary>
+    </member>
+    <member name="F:Microsoft.ComplexEventProcessing.Adapters.AdapterState.Running">
+      <summary>The adapter is running and producing events. </summary>
+    </member>
+    <member name="F:Microsoft.ComplexEventProcessing.Adapters.AdapterState.Suspended">
+      <summary>The adapter is suspended and cannot enqueue events.</summary>
+    </member>
+    <member name="F:Microsoft.ComplexEventProcessing.Adapters.AdapterState.Stopping">
+      <summary>The adapter has been asked to stop producing events because the query is being shut down.</summary>
+    </member>
+    <member name="F:Microsoft.ComplexEventProcessing.Adapters.AdapterState.Stopped">
+      <summary>The adapter has finished running and will not be used again.</summary>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.DequeueOperationResult">
+      <summary>Represents the result of an Dequeue operation.</summary>
+    </member>
+    <member name="F:Microsoft.ComplexEventProcessing.Adapters.DequeueOperationResult.Success">
+      <summary>Operation succeeded.</summary>
+    </member>
+    <member name="F:Microsoft.ComplexEventProcessing.Adapters.DequeueOperationResult.Empty">
+      <summary>The operation failed. The caller needs to suspend itself and wait to be notified that they can do more work with the queue.</summary>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.EdgeInputAdapter">
+      <summary>Base class for an input adapter that produces untyped edge events.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.EdgeInputAdapter.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.Adapters.EdgeInputAdapter" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.EdgeInputAdapter.CreateInsertEvent(Microsoft.ComplexEventProcessing.EdgeType)">
+      <summary>Creates an edge insert event.</summary>
+      <returns>An instance of an edge event.</returns>
+      <param name="edgeType">Edge type (start or end).</param>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.EdgeInputAdapter.Enqueue(Microsoft.ComplexEventProcessing.EdgeEvent@)">
+      <summary>Enqueues an event into the stream associated with this adapter.</summary>
+      <returns>EnqueueOperationResult.Success if the operation succeeded.EnqueueOperationResult.Full if the operation did not succeed because the queue is full.</returns>
+      <param name="eventInstance">Event instance.</param>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.EdgeOutputAdapter">
+      <summary>Represents the base class for an output adapter that receives edge events.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.EdgeOutputAdapter.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.Adapters.EdgeOutputAdapter" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.EdgeOutputAdapter.Dequeue(Microsoft.ComplexEventProcessing.EdgeEvent@)">
+      <summary>Dequeues events from the stream associated with this adapter.</summary>
+      <returns>DequeueOperationResult.Success if the operation succeeded.DequeueOperationResult.Empty if the operation did not succeed and the adapter needs to wait with further Dequeue calls.</returns>
+      <param name="eventInstance">Event that is dequeued.</param>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.EnqueueOperationResult">
+      <summary>Represents the result of an Enqueue operation.</summary>
+    </member>
+    <member name="F:Microsoft.ComplexEventProcessing.Adapters.EnqueueOperationResult.Success">
+      <summary>The operation succeeded.</summary>
+    </member>
+    <member name="F:Microsoft.ComplexEventProcessing.Adapters.EnqueueOperationResult.Full">
+      <summary>The queue is full, and the engine did not accept the event. Further calls to Enqueue will not succeed until the Resume method has been called.</summary>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.IDeclareAdvanceTimeProperties`1">
+      <summary>Interface that must be implemented by the factory classes that (optionally) want to specify AdvanceTimeSettings for the adapter instances that they produce.</summary>
+      <typeparam name="TConfigInfo">Configuration information for the adapter.</typeparam>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.IDeclareAdvanceTimeProperties`1.DeclareAdvanceTimeProperties(`0,Microsoft.ComplexEventProcessing.EventShape,Microsoft.ComplexEventProcessing.CepEventType)">
+      <summary>Declares the AdvanceTime properties given configuration information and the shape of the event. Factory classes that implement this interface tell the runtime that it should produce current time increment (Cti) events that have the properties described by the AdvanceTimeSettings class returned by this method.</summary>
+      <returns>An instance of the AdvanceTimeSettings.</returns>
+      <param name="configInfo">Configuration information for the adapter.</param>
+      <param name="eventShape">shape of the events that must be produced by the adapter.</param>
+      <param name="cepEventType">Type of event that is expected from the adapter.</param>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.IDeclareEventProperties`1">
+      <summary>Optional interface to be implemented by input adapter factory to provide additional information for the event field, such as the culture of a string field.</summary>
+      <typeparam name="TConfigInfo">Configuration information for the adapter.</typeparam>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.IDeclareEventProperties`1.DeclareEventProperties(`0,Microsoft.ComplexEventProcessing.EventShape,Microsoft.ComplexEventProcessing.CepEventType)">
+      <summary>Declares the additional properties of the cepEventType given the adapter factory configuration and event shape information. </summary>
+      <returns>A decorated CepEventType that contains additional event fields information.</returns>
+      <param name="configInfo">Configuration information for the adapter factory.</param>
+      <param name="eventShape">The shape of the events that must be produced by the adapter.</param>
+      <param name="inputEventType">Event type CEP engine expects the input adapter to provide.</param>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.IHighWaterMarkInputAdapterFactory`1">
+      <summary>Creates an utyped input adapter that is able to replay events based on high-water mark checkpoint values.</summary>
+      <typeparam name="TConfigInfo">Type configuration information that is used to create the adapter.</typeparam>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.IHighWaterMarkInputAdapterFactory`1.Create(`0,Microsoft.ComplexEventProcessing.EventShape,Microsoft.ComplexEventProcessing.CepEventType,System.DateTimeOffset)">
+      <summary>Creates an untyped input adapter that is able to replay events based on high-water mark checkpoint values.</summary>
+      <returns>An untyped input adapter that is able to replay events based on high-water mark checkpoint values.</returns>
+      <param name="configInfo">Configuration information for the adapter.</param>
+      <param name="eventShape">The shape of the events that are expected by the adapter.</param>
+      <param name="cepEventType">The type of event that is expected by the adapter.</param>
+      <param name="highWaterMark">The high-water mark from which the adapter should replay events.</param>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.IHighWaterMarkOutputAdapterFactory`1">
+      <summary>Creates an untyped output adapter that is able to replay events based on high-water mark checkpoint values.</summary>
+      <typeparam name="TConfigInfo">Type configuration information that is used to create the adapter.</typeparam>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.IHighWaterMarkOutputAdapterFactory`1.Create(`0,Microsoft.ComplexEventProcessing.EventShape,Microsoft.ComplexEventProcessing.CepEventType,System.DateTimeOffset,System.Int32)">
+      <summary>Creates an untyped output adapter that is able to replay events based on high-water mark checkpoint values.</summary>
+      <returns>An untyped output adapter that is able to replay events based on high-water mark checkpoint values.</returns>
+      <param name="configInfo">Configuration information for the adapter.</param>
+      <param name="eventShape">The shape of the events that are expected by the adapter.</param>
+      <param name="cepEventType">The type of event that is expected by the adapter.</param>
+      <param name="highWaterMark">A value that is used in conjunction with <paramref name="highWaterMarkEventOffset" /> to identify the location of the checkpoint in the output stream. These two properties support the removal of duplicate events in the output stream after recovery.</param>
+      <param name="highWaterMarkEventOffset">A value that is used in conjunction with <paramref name="highWaterMark" /> to identify the location of the checkpoint in the output stream. These two properties support the removal of duplicate events in the output stream after recovery.</param>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.IHighWaterMarkTypedInputAdapterFactory`1">
+      <summary>Creates a typed input adapter that is able to replay events based on high-water mark checkpoint values. </summary>
+      <typeparam name="TConfigInfo">Type configuration information that is used to create the adapter.</typeparam>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.IHighWaterMarkTypedInputAdapterFactory`1.Create``1(`0,Microsoft.ComplexEventProcessing.EventShape,System.DateTimeOffset)">
+      <summary>Creates a typed input adapter that is able to replay events based on high-water mark checkpoint values.</summary>
+      <returns>A typed input adapter that is able to replay events based on high-water mark checkpoint values.</returns>
+      <param name="configInfo">Configuration information for the adapter.</param>
+      <param name="eventShape">The shape of the events that are expected by the adapter.</param>
+      <param name="highWaterMark">The high-water mark from which the adapter should replay events.</param>
+      <typeparam name="TPayload">Type configuration information that is used to create the adapter.</typeparam>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.IHighWaterMarkTypedOutputAdapterFactory`1">
+      <summary>Creates a typed output adapter that is able to replay events based on high-water mark checkpoint values.</summary>
+      <typeparam name="TConfigInfo">Type configuration information that is used to create the adapter.</typeparam>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.IHighWaterMarkTypedOutputAdapterFactory`1.Create``1(`0,Microsoft.ComplexEventProcessing.EventShape,System.DateTimeOffset,System.Int32)">
+      <summary>Creates a typed output adapter that is able to replay events based on high-water mark checkpoint values.</summary>
+      <returns>A typed output adapter that is able to replay events based on high-water mark checkpoint values.</returns>
+      <param name="configInfo">Configuration information for the adapter.</param>
+      <param name="eventShape">The shape of the events that are expected by the adapter.</param>
+      <param name="highWaterMark">A value that is used in conjunction with <paramref name="highWaterMarkEventOffset" /> to identify the location of the checkpoint in the output stream. These two properties support the removal of duplicate events in the output stream after recovery.</param>
+      <param name="highWaterMarkEventOffset">A value that is used in conjunction with <paramref name="highWaterMark" /> to identify the location of the checkpoint in the output stream. These two properties support the removal of duplicate events in the output stream after recovery.</param>
+      <typeparam name="TPayload">Type configuration information that is used to create the adapter.</typeparam>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.IInputAdapterFactory`1">
+      <summary>This interface must be implemented by factory classes that produce untyped input adapters.</summary>
+      <typeparam name="TConfigInfo">Type of configuration information that is used to create the adapter.</typeparam>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.IInputAdapterFactory`1.Create(`0,Microsoft.ComplexEventProcessing.EventShape,Microsoft.ComplexEventProcessing.CepEventType)">
+      <summary>Creates an input adapter.</summary>
+      <returns>An instance of the input adapter.</returns>
+      <param name="configInfo">Configuration information for the adapter.</param>
+      <param name="eventShape">Shape of the events that the adapter produces.</param>
+      <param name="cepEventType">Type of event that is expected from the adapter.</param>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.InputAdapterBase">
+      <summary>Base class for input adapters.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.InputAdapterBase.CleanupResources">
+      <summary>Cleans up engine resources that are used by the adapter host.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.InputAdapterBase.EnqueueCtiEvent(System.DateTimeOffset)">
+      <summary>Enqueues a Current Time Increment (CTI) event.</summary>
+      <returns>EnqueueOperationResult.Success if the operation succeeded.EnqueueOperationResult.Full if the queue is full and the operation did not succeed.</returns>
+      <param name="startTime">Start time of the CTI event.</param>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.InputAdapterBase.OnStopped">
+      <summary>This function is called when the adapter invokes Stopped() to stop itself. Enqueue the EndOfStream event and detach from query instance. After this point, the plan manager is free to shut down the query independently of the adapter.</summary>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.IntervalInputAdapter">
+      <summary>Base class for an input adapter that produces untyped interval events.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.IntervalInputAdapter.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.Adapters.IntervalInputAdapter" /> class. </summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.IntervalInputAdapter.CreateInsertEvent">
+      <summary>Creates an interval insert event.</summary>
+      <returns>An instance of an interval event.</returns>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.IntervalInputAdapter.Enqueue(Microsoft.ComplexEventProcessing.IntervalEvent@)">
+      <summary>Enqueues an event into the stream associated with this adapter.</summary>
+      <returns>EnqueueOperationResult.Success if the operation succeeded.EnqueueOperationResult.Full if the operation did not succeed because the queue is full.</returns>
+      <param name="eventInstance">Event instance.</param>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.IntervalOutputAdapter">
+      <summary>Represents the base class for an output adapter that receives interval events.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.IntervalOutputAdapter.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.Adapters.IntervalOutputAdapter" /> class. </summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.IntervalOutputAdapter.Dequeue(Microsoft.ComplexEventProcessing.IntervalEvent@)">
+      <summary>Dequeues events from the stream associated with this adapter.</summary>
+      <returns>DequeueOperationResult.Success if the operation succeeded.DequeueOperationResult.Empty if the operation did not succeed and the adapter needs to wait with further Dequeue calls. After this the adapter can be resumed at any moment by the runtime. </returns>
+      <param name="eventInstance">Event that is dequeued.</param>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.IOutputAdapterFactory`1">
+      <summary>This interface must be implemented by factory classes that produce untyped output adapters.</summary>
+      <typeparam name="TConfigInfo">Type of configuration information that is used to create the adapter.</typeparam>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.IOutputAdapterFactory`1.Create(`0,Microsoft.ComplexEventProcessing.EventShape,Microsoft.ComplexEventProcessing.CepEventType)">
+      <summary>Creates an output adapter.</summary>
+      <returns>An instance of the output adapter.</returns>
+      <param name="configInfo">Configuration information for the adapter.</param>
+      <param name="eventShape">Shape of the events that the adapter produces.</param>
+      <param name="cepEventType">Type of event that will be received by the adapter.</param>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.ITypedDeclareAdvanceTimeProperties`1">
+      <summary>Interface that must be implemented by typed input factory classes that (optionally) want to specify AdvanceTimeSettings for the adapter instances that they produce.</summary>
+      <typeparam name="TConfigInfo">Type of configuration information that is used to create the adapter.</typeparam>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.ITypedDeclareAdvanceTimeProperties`1.DeclareAdvanceTimeProperties``1(`0,Microsoft.ComplexEventProcessing.EventShape)">
+      <summary>Declares the AdvanceTime properties given configuration information and the shape of the event. Factory classes that implement this interface tell the runtime that it should produce Current Time Increment (Cti) events that have the properties described by the AdvanceTimeSettings class returned by this method.</summary>
+      <returns>An instance of the advance time settings.</returns>
+      <param name="configInfo">Configuration information for the adapter.</param>
+      <param name="eventShape">Shape of the events that must be produced by the adapter.</param>
+      <typeparam name="TPayload">Type of the payload that is created by this adapter.</typeparam>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.ITypedDeclareEventProperties`1">
+      <summary>Optional interface to be implemented by a typed input adapter factory to provide additional information for the event field, such as the culture  of a string field.</summary>
+      <typeparam name="TConfigInfo">Type of configuration information for the adapter.</typeparam>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.ITypedDeclareEventProperties`1.DeclareEventProperties``1(`0,Microsoft.ComplexEventProcessing.EventShape,Microsoft.ComplexEventProcessing.CepEventType)">
+      <summary>Declares the additional properties of the cepEventType given the adapter factory configuration and event shape information.</summary>
+      <returns>A decorated CepEventType that contains additional event fields information.</returns>
+      <param name="configInfo">Configuration information for the adapter factory.</param>
+      <param name="eventShape">Shape of the events that must be produced by the adapter.</param>
+      <param name="inputEventType">Event type CEP engine expects the input adapter to provide.</param>
+      <typeparam name="TPayload">Type of the payload.</typeparam>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.ITypedInputAdapterFactory`1">
+      <summary>This interface must be implemented by factory classes that produce typed input adapters.</summary>
+      <typeparam name="TConfigInfo">Type of configuration information that is used to create the adapter.</typeparam>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.ITypedInputAdapterFactory`1.Create``1(`0,Microsoft.ComplexEventProcessing.EventShape)">
+      <summary>This interface must be implemented by factory classes that produce typed input adapters.</summary>
+      <returns>An instance of the input adapter. </returns>
+      <param name="configInfo">Configuration information for the adapter.</param>
+      <param name="eventShape">Shape of the events that must be produced by the adapter.</param>
+      <typeparam name="TPayload">Type of the payload that is created by this adapter.</typeparam>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.ITypedOutputAdapterFactory`1">
+      <summary>This interface must be implemented by factory classes that produce typed output adapters.</summary>
+      <typeparam name="TConfigInfo">Type of the configuration information that is used to create the adapter.</typeparam>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.ITypedOutputAdapterFactory`1.Create``1(`0,Microsoft.ComplexEventProcessing.EventShape)">
+      <summary>Creates an output adapter.t.</summary>
+      <returns>An instance of the output adapter.</returns>
+      <param name="configInfo">Configuration information for the adapter.</param>
+      <param name="eventShape">Shape of the events that will be received by the adapter.</param>
+      <typeparam name="TPayload">Type of the payload that is created by this adapter.</typeparam>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.OutputAdapterBase">
+      <summary>Base class for output adapters.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.OutputAdapterBase.CleanupResources">
+      <summary>Cleans up engine resources that are used by the adapter host.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.OutputAdapterBase.OnStopped">
+      <summary>This function is called when the adapter invokes Stopped() to stop itself.</summary>
+    </member>
+    <member name="P:Microsoft.ComplexEventProcessing.Adapters.OutputAdapterBase.OutputEventType">
+      <summary>Gets the event type that the output adapter will receive.</summary>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.PointInputAdapter">
+      <summary>Base class for an input adapter that produces untyped point events</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.PointInputAdapter.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.Adapters.PointInputAdapter" /> class. </summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.PointInputAdapter.CreateInsertEvent">
+      <summary>Creates a point insert event.</summary>
+      <returns>An instance of a point event allocated in the internal memory.</returns>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.PointInputAdapter.Enqueue(Microsoft.ComplexEventProcessing.PointEvent@)">
+      <summary>Enqueues an event into the stream associated with this adapter.</summary>
+      <returns>EnqueueOperationResult.Success if the operation succeeded.EnqueueOperationResult.Full if the operation did not succeed because the queue is full.</returns>
+      <param name="eventInstance">Event instance.</param>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.PointOutputAdapter">
+      <summary>Represents the base class for an output adapter that receives point events.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.PointOutputAdapter.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.Adapters.PointOutputAdapter" /> class. </summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.PointOutputAdapter.Dequeue(Microsoft.ComplexEventProcessing.PointEvent@)">
+      <summary>Dequeues events from the stream associated with this adapter.</summary>
+      <returns>DequeueOperationResult.Success if the operation succeeded.DequeueOperationResult.Empty if the operation did not succeed and the adapter needs to wait with further Dequeue calls. After this the adapter can be resumed at any moment by the runtime adapter had been stopped.</returns>
+      <param name="eventInstance">Event that is dequeued.</param>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.PublishedStreamAdapterFactory">
+      <summary>Adapter factory for the published stream input and output adapters.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.PublishedStreamAdapterFactory.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.Adapters.PublishedStreamAdapterFactory" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.PublishedStreamAdapterFactory.Create(Microsoft.ComplexEventProcessing.Adapters.PublishedStreamInputAdapterConfiguration,Microsoft.ComplexEventProcessing.EventShape,Microsoft.ComplexEventProcessing.CepEventType)">
+      <summary>Creates a new input adapter. This method should not be called directly.</summary>
+      <returns>The new adapter instance.</returns>
+      <param name="configInfo">The adapter configuration information.</param>
+      <param name="eventShape">The event shape.</param>
+      <param name="cepEventType">The event type.</param>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.PublishedStreamAdapterFactory.Create(Microsoft.ComplexEventProcessing.Adapters.PublishedStreamOutputAdapterConfiguration,Microsoft.ComplexEventProcessing.EventShape,Microsoft.ComplexEventProcessing.CepEventType)">
+      <summary>Creates a new output adapter. This method should not be called directly.</summary>
+      <returns>The new adapter instance.</returns>
+      <param name="configInfo">The adapter configuration information.</param>
+      <param name="eventShape">The event shape.</param>
+      <param name="cepEventType">The event type.</param>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.PublishedStreamAdapterFactory.Dispose">
+      <summary>Releases the resources used by the <see cref="T:Microsoft.ComplexEventProcessing.Adapters.PublishedStreamAdapterFactory" /> class.</summary>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.PublishedStreamInputAdapterConfiguration">
+      <summary>The configuration for published stream input adapters.</summary>
+    </member>
+    <member name="F:Microsoft.ComplexEventProcessing.Adapters.PublishedStreamInputAdapterConfiguration.PublishedStreamName">
+      <summary>Name of the published stream which will be the event source for the input adapter.</summary>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.PublishedStreamOutputAdapterConfiguration">
+      <summary>The configuration for published stream output adapters.</summary>
+    </member>
+    <member name="F:Microsoft.ComplexEventProcessing.Adapters.PublishedStreamOutputAdapterConfiguration.PublishedStreamName">
+      <summary>The name of the published stream which will be the event sink for the output adapter.</summary>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.TypedEdgeInputAdapter`1">
+      <summary>Base class for an input adapter that produces edge events which have a payload structure.</summary>
+      <typeparam name="TPayload">Payload structure for the edge events produced by this adapter.</typeparam>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.TypedEdgeInputAdapter`1.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.Adapters.TypedEdgeInputAdapter`1" /> class. </summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.TypedEdgeInputAdapter`1.CreateInsertEvent(Microsoft.ComplexEventProcessing.EdgeType)">
+      <summary>Creates an edge Insert event.</summary>
+      <returns>An instance of an edge event.</returns>
+      <param name="edgeType">Type of edge event to create (start edge or end edge event).</param>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.TypedEdgeInputAdapter`1.Enqueue(Microsoft.ComplexEventProcessing.EdgeEvent{`0}@)">
+      <summary>Enqueues the specified event into the stream that is associated with this adapter.</summary>
+      <returns>EnqueueOperationResult.Success if the operation succeeded.EnqueueOperationResult.Full if the operation did not succeed because the queue is full.</returns>
+      <param name="eventInstance">Event instance.</param>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.TypedEdgeOutputAdapter`1">
+      <summary>Represents the base class for an output adapter that receives edge events.</summary>
+      <typeparam name="TPayload">Payload type. Must have default constructor.</typeparam>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.TypedEdgeOutputAdapter`1.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.Adapters.TypedEdgeOutputAdapter`1" /> class. </summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.TypedEdgeOutputAdapter`1.Dequeue(Microsoft.ComplexEventProcessing.EdgeEvent{`0}@)">
+      <summary>Dequeues events from the stream associated with this adapter.</summary>
+      <returns>DequeueOperationResult.Success if the operation succeeded.DequeueOperationResult.Empty if the operation did not succeed and the adapter needs to wait with further Dequeue calls.</returns>
+      <param name="eventInstance">Event instance</param>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.TypedInputAdapter`2">
+      <summary>Base class for a typed input adapter.</summary>
+      <typeparam name="TEvent">Event type produced by this adapter.</typeparam>
+      <typeparam name="TPayload">Payload structure for the events produced by this adapter.</typeparam>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.TypedInputAdapter`2.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.Adapters.TypedInputAdapter`2" /> class. </summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.TypedInputAdapter`2.ReleaseEvent(`0@)">
+      <summary>Releases the memory occupied by an event.</summary>
+      <param name="eventInstance">Event instance</param>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.TypedIntervalInputAdapter`1">
+      <summary>Base class for an input adapter that produces interval events which have a payload structure.</summary>
+      <typeparam name="TPayload">Payload structure for the interval events produced by this adapter.</typeparam>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.TypedIntervalInputAdapter`1.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.Adapters.TypedIntervalInputAdapter`1" /> class. </summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.TypedIntervalInputAdapter`1.CreateInsertEvent">
+      <summary>Creates an interval insert event.</summary>
+      <returns>An instance of an edge event.</returns>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.TypedIntervalInputAdapter`1.Enqueue(Microsoft.ComplexEventProcessing.IntervalEvent{`0}@)">
+      <summary>Enqueues an event into the stream associated with this adapter.</summary>
+      <returns>EnqueueOperationResult.Success if the operation succeeded.EnqueueOperationResult.Full if the operation did not succeed because the queue is full.</returns>
+      <param name="eventInstance">Event instance</param>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.TypedIntervalOutputAdapter`1">
+      <summary>Represents the base class for an output adapter that receives interval events.</summary>
+      <typeparam name="TPayload">Payload type. Must have default constructor.</typeparam>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.TypedIntervalOutputAdapter`1.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.Adapters.TypedIntervalOutputAdapter`1" /> class. </summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.TypedIntervalOutputAdapter`1.Dequeue(Microsoft.ComplexEventProcessing.IntervalEvent{`0}@)">
+      <summary>Dequeues events from the stream associated with this adapter.</summary>
+      <returns>DequeueOperationResult.Success if the operation succeeded.DequeueOperationResult.Empty if the operation did not succeed and the adapter needs to wait with further Dequeue() calls. After this the adapter can be resumed at any moment by the runtime. </returns>
+      <param name="eventInstance">Event that is dequeued.</param>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.TypedOutputAdapter`2">
+      <summary>Represents the base class for a typed output adapter.</summary>
+      <typeparam name="TEvent">Event type.</typeparam>
+      <typeparam name="TPayload">Payload type.</typeparam>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.TypedOutputAdapter`2.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.Adapters.TypedOutputAdapter`2" /> class. </summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.TypedOutputAdapter`2.ReleaseEvent(`0@)">
+      <summary>Releases the memory occupied by an event.</summary>
+      <param name="eventInstance">Event instance. </param>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.TypedPointInputAdapter`1">
+      <summary>Base class for an input adapter that produces point events that have a payload structure.</summary>
+      <typeparam name="TPayload">Payload structure for the point events produced by this adapter.</typeparam>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.TypedPointInputAdapter`1.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.Adapters.TypedPointInputAdapter`1" /> class. </summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.TypedPointInputAdapter`1.CreateInsertEvent">
+      <summary>Creates a point insert event.</summary>
+      <returns>An instance of an edge event.</returns>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.TypedPointInputAdapter`1.Enqueue(Microsoft.ComplexEventProcessing.PointEvent{`0}@)">
+      <summary>Enqueues the specified event into the stream that is associated with this adapter.</summary>
+      <returns>EnqueueOperationResult.Success if the operation succeeded.EnqueueOperationResult.Full if the operation did not succeed because the queue is full.</returns>
+      <param name="eventInstance">Event instance.</param>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.TypedPointOutputAdapter`1">
+      <summary>Represents the base class for an output adapter that receives point events that have a payload structure.</summary>
+      <typeparam name="TPayload">The type of the event payload.</typeparam>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.TypedPointOutputAdapter`1.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.Adapters.TypedPointOutputAdapter`1" /> class. </summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.TypedPointOutputAdapter`1.Dequeue(Microsoft.ComplexEventProcessing.PointEvent{`0}@)">
+      <summary>Dequeues events from the stream associated with this adapter.</summary>
+      <returns>DequeueOperationResult.Success if the operation succeeded.DequeueOperationResult.Empty if the operation did not succeed and the adapter needs to wait with further Dequeue calls. After this the adapter can be resumed at any moment by the runtime.</returns>
+      <param name="eventInstance">Event that is dequeued.</param>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.UntypedInputAdapter`1">
+      <summary>Base class for a untyped input adapter.</summary>
+      <typeparam name="TEvent">Payload structure for the events produced by this adapter.</typeparam>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.UntypedInputAdapter`1.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.Adapters.UntypedInputAdapter`1" /> class. </summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.UntypedInputAdapter`1.ReleaseEvent(`0@)">
+      <summary>Release the memory occupied by an event.</summary>
+      <param name="eventInstance">Event instance.</param>
+    </member>
+    <member name="T:Microsoft.ComplexEventProcessing.Adapters.UntypedOutputAdapter`1">
+      <summary>Base class for an untyped input adapter.</summary>
+      <typeparam name="TEvent">Payload structure for the events produced by this adapter.</typeparam>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.UntypedOutputAdapter`1.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.ComplexEventProcessing.Adapters.UntypedOutputAdapter`1" /> class. </summary>
+    </member>
+    <member name="M:Microsoft.ComplexEventProcessing.Adapters.UntypedOutputAdapter`1.ReleaseEvent(`0@)">
+      <summary>Releases the memory occupied by an event.</summary>
+      <param name="eventInstance">Event instance </param>
+    </member>
+  </members>
+</doc>
